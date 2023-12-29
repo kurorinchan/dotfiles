@@ -2,5 +2,8 @@
 {{- if eq .chezmoi.os "darwin" -}}
 #!/bin/bash -x
 
+# Install zsh autosuggest.
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
 brew bundle --global
 {{ end -}}

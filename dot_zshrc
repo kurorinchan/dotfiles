@@ -1,0 +1,116 @@
+export LANG=ja_JP.UTF-8
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/.nexustools"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+export GOPATH="${HOME}/go"
+export GOBIN="${GOPATH}/bin"
+export PATH="${PATH}:${GOBIN}"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# This is for ARM (M1) macs. The arm binaries are put under /opt/homebrew.
+# TODO: Make this conditional.
+export PATH="/opt/homebrew/bin:${PATH}"
+
+# java 文字化け対策
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+
+# Creates pipenv venv in the same directory.
+export PIPENV_VENV_IN_PROJECT=1
+
+# History setup.
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+
+# cd auto pushes.
+setopt appendhistory autocd autopushd
+
+# Use emacs keybinds.
+bindkey -e
+
+export LC_MESSAGES=ja_JP.UTF-8
+
+# Compinit configs.
+autoload -U compinit
+# Put .zcompdump files under ~/.cache/zsh/. Must be after oh my zsh.
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+# highlight tab completion suggestions.
+zstyle ':completion:*' menu select
+# Tab completion lower cases will match against lower and upper cases.
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Aliases belong here.
+alias ls='lsd -hF'
+alias ll='ls -alF'
+alias la='ls -a'
+alias sl='ls -F'
+alias l='ls -F'
+alias s='ls -F'
+alias c='cd'
+alias t=tmux
+alias popd='popd -q'
+alias g=git
+
+
+# Show command execution time.
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    unset timer
+  fi
+}
+
+# equivalent to 'open' on bsd
+case "$OSTYPE" in
+    cygwin)
+        alias open="cygstart"
+        ;;
+    linux*)
+        alias start="xdg-open"
+        alias open="xdg-open"
+        ;;
+    darwin*)
+        alias start="open"
+        ;;
+esac
+
+
+# anonymous function that gets executed once.
+# Load autosuggest if it exists.
+function () {
+    local autosuggest_dir="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    if [[ -f $autosuggest_dir ]]; then
+        source $autosuggest_dir
+    fi
+}
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto -CF'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+export BAT_THEME=Coldark-Dark
+
+# For prompt.
+eval "$(starship init zsh)"
+
+# Load tools.
+source "$HOME/.config/broot/launcher/bash/br"
+eval "$(mcfly init zsh)"
+eval "$(zoxide init zsh)"
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# TODO: This is for mac, make it conditional.
+eval "$(/opt/homebrew/bin/brew shellenv)"

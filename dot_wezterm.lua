@@ -99,5 +99,8 @@ config.colors = ime_cursor_highlight_dict["dark_pink"]
 
 config.default_cursor_style = 'SteadyUnderline'
 
+-- Cmd-q will not prompt anymore.
+config.window_close_confirmation = 'NeverPrompt'
+
 -- and finally, return the configuration to wezterm
 return config
