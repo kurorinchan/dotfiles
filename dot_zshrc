@@ -18,7 +18,12 @@ export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 # Creates pipenv venv in the same directory.
 export PIPENV_VENV_IN_PROJECT=1
 
-# History setup.
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Report process time that took more than 3s user time.
+# REPORTTIME=3
+
+# Histoyr setup
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
@@ -84,9 +89,16 @@ esac
 # anonymous function that gets executed once.
 # Load autosuggest if it exists.
 function () {
-    local autosuggest_dir="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    if [[ -f $autosuggest_dir ]]; then
-        source $autosuggest_dir
+    local plugin_file="$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    if [[ -f $plugin_file ]]; then
+        source $plugin_file
+    fi
+}
+
+function () {
+    local plugin_file="$HOME/.zsh/zsh-replace-multiple-dots/replace-multiple-dots.plugin.zsh"
+    if [[ -f $plugin_file ]]; then
+        source $plugin_file
     fi
 }
 
@@ -110,7 +122,4 @@ source "$HOME/.config/broot/launcher/bash/br"
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-# TODO: This is for mac, make it conditional.
 eval "$(/opt/homebrew/bin/brew shellenv)"
