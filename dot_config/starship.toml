@@ -22,8 +22,9 @@ $scala\
 $python\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
-[ ](fg:#33658A)\
+$character\
 """
+#[ ](fg:#33658A)\
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
@@ -62,6 +63,10 @@ truncation_symbol = "…/"
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
+
+[character]
+success_symbol = '[](fg:#06969A)'
+error_symbol = '[](bold red)'
 
 [c]
 symbol = " "
