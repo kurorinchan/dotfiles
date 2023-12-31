@@ -3,7 +3,9 @@ export PATH="${PATH}:${HOME}/bin"
 export PATH="${PATH}:${HOME}/.nexustools"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # java 文字化け対策
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
