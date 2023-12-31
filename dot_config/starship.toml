@@ -146,4 +146,4 @@ format = '[ ♥ $time ]($style)'
 [python]
 symbol = '👾 '
 style = "bg:#86BBD8"
-format = '[ $symbol (env:$virtualenv) ($version) ]($style)'
+format = '[ $symbol virtualenv ($version) ]($style)'
