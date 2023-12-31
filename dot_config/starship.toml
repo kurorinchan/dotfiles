@@ -1,4 +1,6 @@
 format = """
+$cmd_duration\
+$line_break\
 $status\
 $time\
 [](bg:#DA627D fg:#9A348E)\
@@ -30,6 +32,13 @@ $character\
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
+
+[cmd_duration]
+min_time = 0
+format = 'underwent [$duration](bold yellow)'
+
+[line_break]
+disabled = false
 
 # You can also replace your username with a neat symbol like   or disable this
 # and use the os module below
