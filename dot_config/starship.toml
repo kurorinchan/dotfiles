@@ -1,5 +1,5 @@
 format = """
-[](fg:#06969A bg:#33658A)\
+$status\
 $time\
 [](bg:#DA627D fg:#9A348E)\
 $directory\
@@ -25,6 +25,8 @@ $docker_context\
 $character\
 """
 #[ ](fg:#33658A)\
+
+
 
 # Disable the blank line at the start of the prompt
 # add_newline = false
@@ -67,6 +69,15 @@ truncation_symbol = "…/"
 [character]
 success_symbol = '[](fg:#06969A)'
 error_symbol = '[](bold red)'
+
+[status]
+# This used to be the first thing, instead of this status.
+# [](fg:#06969A bg:#33658A)\
+disabled = false
+style = "bg:#33658A"
+success_symbol = '[](fg:#06969A bg:#33658A)'
+symbol = '[](bold red bg:#33658A)'
+format = '$symbol'
 
 [c]
 symbol = " "
