@@ -1,16 +1,9 @@
 export LANG=ja_JP.UTF-8
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 export PATH="${PATH}:${HOME}/bin"
 export PATH="${PATH}:${HOME}/.nexustools"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
-export GOPATH="${HOME}/go"
-export GOBIN="${GOPATH}/bin"
-export PATH="${PATH}:${GOBIN}"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# This is for ARM (M1) macs. The arm binaries are put under /opt/homebrew.
-# TODO: Make this conditional.
-export PATH="/opt/homebrew/bin:${PATH}"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # java 文字化け対策
 export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
@@ -119,7 +112,7 @@ eval "$(starship init zsh)"
 
 # Load tools.
 source "$HOME/.config/broot/launcher/bash/br"
+export MCFLY_FUZZY=2
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
