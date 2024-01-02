@@ -51,6 +51,9 @@ alias c='cd'
 alias t=tmux
 alias popd='popd -q'
 alias g=git
+alias gb='git branch'
+alias gst='git status'
+alias glog='git log --oneline --decorate --color --graph'
 
 # equivalent to 'open' on bsd
 case "$OSTYPE" in
