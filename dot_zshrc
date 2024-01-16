@@ -55,6 +55,17 @@ alias gb='git branch'
 alias gst='git status'
 alias glog='git log --oneline --decorate --color --graph'
 
+# Pipe jq output to pager.
+jqbat() {
+    jq "$@" -C | bat
+}
+
+jqf() {
+  filename=$1
+  shift  # Remove the first argument (filename)
+  jq "$@" < "$filename"  # Pass all remaining arguments to jq
+}
+
 # equivalent to 'open' on bsd
 case "$OSTYPE" in
     cygwin)
