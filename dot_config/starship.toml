@@ -3,10 +3,12 @@
 format = """
 $cmd_duration\
 $line_break\
-[](color_orange)\
+${custom.first_separator_nossh}\
+${custom.first_separator_ssh}\
 $username\
 $hostname\
-[](bg:color_yellow fg:color_orange)\
+${custom.directory_separator_nossh}\
+${custom.directory_separator_ssh}\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
@@ -71,17 +73,36 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
+[custom.first_separator_ssh]
+when = ''' test $SSH_CONNECTION '''
+format = '[](color_blue)'
+
+[custom.first_separator_nossh]
+when = ''' test -z $SSH_CONNECTION '''
+format = '[](color_orange)'
+
+# Only on when SSHing.
 [username]
 show_always = false
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user]($style)'
+style_user = "bg:color_blue fg:color_fg0"
+style_root = "bg:color_blue fg:color_fg0"
+format = '[$user]($style)'
 
+# Only on when SSHing.
 [hostname]
 ssh_only = true
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_blue fg:color_fg0"
 format = '[@$hostname]($style)'
 disabled = false
+
+[custom.directory_separator_ssh]
+when = ''' test $SSH_CONNECTION '''
+format = '[](bg:color_yellow fg:color_blue)'
+#[](bg:color_yellow fg:color_orange)\
+
+[custom.directory_separator_nossh]
+when = ''' test -z $SSH_CONNECTION '''
+format = '[](bg:color_yellow fg:color_orange)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
@@ -178,3 +199,4 @@ vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
