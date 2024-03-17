@@ -4,6 +4,8 @@ format = """
 $cmd_duration\
 $line_break\
 [](color_orange)\
+$username\
+$hostname\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -70,10 +72,16 @@ Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
 [username]
-show_always = true
+show_always = false
 style_user = "bg:color_orange fg:color_fg0"
 style_root = "bg:color_orange fg:color_fg0"
-format = '[ $user ]($style)'
+format = '[ $user]($style)'
+
+[hostname]
+ssh_only = true
+style = "bg:color_orange fg:color_fg0"
+format = '[@$hostname]($style)'
+disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
