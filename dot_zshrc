@@ -55,6 +55,12 @@ alias gb='git branch'
 alias gst='git status'
 alias glog='git log --oneline --decorate --color --graph'
 
+# Debian system installs bat as batcat. Check if it exists and alias.
+if command -v batcat >/dev/null 2>&1; then
+    alias bat="batcat"
+fi
+
+
 # Pipe jq output to pager.
 jqbat() {
     jq "$@" -C | bat
