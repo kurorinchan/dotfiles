@@ -10,8 +10,6 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.enable_kitty_graphics = true
-
 -- This is where you actually apply your config choices
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 17
