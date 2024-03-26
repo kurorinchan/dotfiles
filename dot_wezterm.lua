@@ -17,6 +17,8 @@ config.font = wezterm.font "Ricty Diminished for Powerline"
 
 config.color_scheme = 'Sonokai (Gogh)'
 
+config.audible_bell = "Disabled"
+
 -- Some other good themes.
 -- config.color_scheme = "OneHalfDark"
 -- These themes have compose_cursor colors defined, so IME highlights work out of the box.
