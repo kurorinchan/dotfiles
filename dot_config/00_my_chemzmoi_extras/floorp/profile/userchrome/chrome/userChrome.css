@@ -1,0 +1,77 @@
+/*************************************************************************************************************************************************************************************************************************************************************
+
+"userChrome.css" is a custom CSS file that can be used to specify CSS style rules for Floorp's interface (NOT internal site) using "chrome" privileges.
+For instance, if you want to hide the tab bar, you can use the following CSS rule:
+
+**************************************
+#TabsToolbar {                       *
+    display: none !important;        *
+}                                    *
+**************************************
+
+NOTE: You can use the userChrome.css file without change preferences (about:config)
+
+Quote: https://userChrome.org | https://github.com/topics/userchrome 
+
+************************************************************************************************************************************************************************************************************************************************************/
+
+/* README:
+ *
+ * import statements must be the first things in userchrome.css
+ *
+ * */
+
+/* Source file
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_main_toolbar.css
+ * made available under Mozilla Public License v. 2.0
+ * See the above repository for updates as well as full license text.
+ * 
+ * This style hides the main toolbar and shows it when the cursor is over the
+ * tabs toolbar as well as whenever the focus is inside nav-bar, such as when
+ * urlbar is focused. 
+ * */
+@import url("autohide_main_toolbar.css");
+
+/* Moving URL bar (nav bar) to the bottom of the window 
+ * https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/navbar_below_content.css
+ * This is incompatible with autohide, so choose one.
+ * */
+/*
+@import url("navbar_below_content.css");
+*/
+
+@import url("floating_bottom_findbar_bigger.css");
+
+@charset "UTF-8";
+
+@-moz-document url(chrome://browser/content/browser.xhtml){
+
+/* Please write your custom CSS under this line*/
+
+/* This css hides the native tabs 
+ * but floorp has a native tab bar hiding so commented out for now.
+ *
+ * */
+/*
+#TabsToolbar {
+  visibility: collapse;
+}
+*/
+
+/* remove titlebar */
+#titlebar {
+  visibility: collapse;
+}
+
+/* Customize sidebar size.
+ * Using width, it sets the defualt width. Useful when the browser crashes
+ * and doesn't remember the width.
+ * */
+#sidebar-box {
+  max-width: 40% !important;
+  min-width: 100px !important;
+  /*width: 200px !important;*/
+}
+
+
+}

@@ -1,0 +1,87 @@
+/* Make the Find bar float at the bottom */
+/* Enhanced floating Find bar styling */
+/* Enhanced floating Find bar styling */
+.browserContainer>findbar {
+    position: fixed !important;
+    bottom: 20px !important;
+    /* Distance from the bottom of the viewport */
+    left: 50% !important;
+    /* Center it horizontally */
+    transform: translateX(-50%);
+    width: 60vw !important;
+    /* Adjust width: 60% of viewport width */
+    max-width: 800px;
+    /* Set a maximum width for large screens */
+    min-width: 300px;
+    /* Ensure it doesn't get too narrow */
+    background: rgba(30, 30, 30, 0.95) !important;
+    /* Dark semi-transparent background */
+    color: white !important;
+    /* White text for better contrast */
+    border-radius: 10px;
+    /* Smooth rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    /* Stronger floating shadow */
+    z-index: 9999;
+    /* Ensure it stays above all other UI elements */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtle border */
+    padding: 8px;
+    /* Adds space inside the box for a cleaner look */
+}
+
+/* Adjust the Find bar close button for better visibility */
+.browserContainer>findbar .findbar-closebutton {
+    background-color: rgba(60, 60, 60, 0.8) !important;
+    /* Neutral dark background */
+    color: white !important;
+    /* White "X" for contrast */
+    border-radius: 50%;
+    /* Makes it circular */
+    width: 20px !important;
+    height: 20px !important;
+    padding: 2px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Subtle border */
+}
+
+/* Ensure Find bar buttons fit nicely */
+.browserContainer>findbar .findbar-button {
+    border-radius: 4px !important;
+    /* Rounded buttons */
+    margin: 0 4px !important;
+    /* Add space between buttons */
+}
+
+/* Ensure inputs in the Find bar look clean */
+.browserContainer>findbar input {
+    background: rgba(255, 255, 255, 0.8) !important;
+    /* Light input field background */
+    color: black !important;
+    /* Black text for readability */
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    /* Subtle border */
+    padding: 4px 8px !important;
+    /* Comfortable padding inside inputs */
+    border-radius: 4px;
+    /* Slightly rounded edges */
+    outline: none !important;
+    /* Remove focus outline for cleaner look */
+}
+
+/* Fix text selection contrast in input fields */
+.browserContainer>findbar input::selection {
+    background: rgba(0, 120, 215, 0.8) !important;
+    /* Highlighted text background */
+    color: white !important;
+    /* White text for contrast */
+}
+
+.browserContainer>findbar input:focus::selection {
+    background: rgba(0, 120, 215, 0.8) !important;
+    /* Same for focused state */
+    color: white !important;
+}
