@@ -19,6 +19,10 @@ config.color_scheme = 'Sonokai (Gogh)'
 
 config.audible_bell = "Disabled"
 
+-- start size.
+config.initial_cols = 120
+config.initial_rows = 75
+
 -- Some other good themes.
 -- config.color_scheme = "OneHalfDark"
 -- These themes have compose_cursor colors defined, so IME highlights work out of the box.
