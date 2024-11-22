@@ -1,0 +1,96 @@
+// Generate the corresponding css file with this file.
+// If `npx` is installed do.
+// npx sass floating_bottom_findbar.scss floating_bottom_findbar.css
+//
+// If you want to "watch" while editting scss do.
+// npx sass --no-source-map --watch floating_bottom_findbar.scss:floating_bottom_findbar.css
+
+// Variables for customization.
+$font-size: 16px; // Base font size
+$input-padding-y: 3px; // Vertical padding for input fields
+$input-padding-x: 10px; // Horizontal padding for input fields
+$bar-width: 80vw; // Default width of the Find bar
+$bar-max-width: 1000px; // Maximum width of the Find bar
+$bar-min-width: 300px; // Minimum width of the Find bar
+$bar-padding: 12px; // Padding inside the Find bar
+$bar-bg: rgba(30, 30, 30, 0.95); // Background color of the bar
+$bar-color: white; // Text color inside the bar
+$highlight-bg: rgba(0, 120, 215, 0.8); // Highlight background color
+$highlight-text: white; // Highlighted text color
+$close-button-size: 20px; // Size of the close button
+
+// Enhanced floating Find bar styling
+.browserContainer>findbar {
+    position: fixed !important; // Makes the bar float at a fixed position
+    bottom: 20px !important; // Places the bar 20px from the bottom of the viewport
+    left: 50% !important; // Centers the bar horizontally
+    transform: translateX(-50%); // Adjusts centering by offsetting half its width
+    width: $bar-width !important;
+    max-width: $bar-max-width; // Ensures the bar doesn’t exceed this width
+    min-width: $bar-min-width; // Prevents the bar from shrinking too much
+    background: $bar-bg !important;
+    color: $bar-color !important;
+    border-radius: 10px; // Rounds the corners of the bar
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Creates a "floating" shadow effect
+    z-index: 9999; // Ensures the bar appears above other UI elements
+    border: 1px solid rgba(255, 255, 255, 0.2); // Adds a subtle border for definition
+    padding: $bar-padding !important;
+    display: flex !important; // Makes the bar use a flexbox layout
+    flex-wrap: nowrap !important; // Prevents items from wrapping onto new lines
+    align-items: center !important; // Vertically aligns items within the bar
+    overflow: hidden !important; // Disables scrolling within the bar
+    height: auto !important; // Automatically adjusts height based on content
+}
+
+// Font size for inputs and buttons
+.browserContainer>findbar input,
+.browserContainer>findbar button {
+    font-size: $font-size !important; // Ensures consistent font size for elements
+}
+
+// Input field styling
+.browserContainer>findbar input {
+    background: rgba(255, 255, 255, 0.8) !important; // Light background for inputs
+    color: black !important; // Black text for readability
+    border: 1px solid rgba(0, 0, 0, 0.3) !important; // Subtle border for inputs
+    padding: $input-padding-y $input-padding-x !important;
+    border-radius: 4px; // Adds rounded edges to inputs
+    outline: none !important; // Removes the default focus outline for cleaner look
+}
+
+// Fix text selection contrast in input fields
+.browserContainer>findbar input::selection {
+    background: $highlight-bg !important;
+    color: $highlight-text !important;
+}
+
+.browserContainer>findbar input:focus::selection {
+    background: $highlight-bg !important;
+    color: $highlight-text !important;
+}
+
+// Button padding and alignment
+.browserContainer>findbar .findbar-button {
+    padding: 8px 12px !important; // Adjusts button padding for better alignment
+    border-radius: 4px !important; // Rounds the corners of buttons
+    margin: 0 4px !important; // Adds spacing between buttons
+}
+
+// Close button styling
+.browserContainer>findbar .findbar-closebutton {
+    background-color: rgba(60, 60, 60, 0.8) !important; // Neutral dark background
+    color: white !important;
+    border-radius: 50%; // Makes the button circular
+    width: $close-button-size !important;
+    height: $close-button-size !important;
+    padding: 2px !important; // Reduces padding to make the button compact
+    display: flex !important; // Centers the "X" icon inside the button
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3); // Adds a subtle border for definition
+}
+
+// Spacing for checkboxes
+.browserContainer>findbar .findbar-checkbox {
+    margin: 0 8px !important; // Adds horizontal spacing for checkboxes
+}
