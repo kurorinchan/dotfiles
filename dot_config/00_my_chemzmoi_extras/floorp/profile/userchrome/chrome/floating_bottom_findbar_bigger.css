@@ -82,8 +82,11 @@
     /* Black text for readability */
     border: 1px solid rgba(0, 0, 0, 0.3) !important;
     /* Subtle border */
-    padding: 6px 10px !important;
-    /* Adjust padding for taller inputs */
+    padding: 3px 10px !important;
+    /* Adjust padding for taller inputs.
+     * Do not make the first value (up, down) bigger than 3px.
+     * The input box becomes "scrollable" vertially and is not neat.
+     * */
     border-radius: 4px;
     /* Slightly rounded edges */
     outline: none !important;
