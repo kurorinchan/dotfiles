@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local mux = wezterm.mux
 
 -- This table will hold the configuration.
 local config = {}
@@ -20,8 +21,28 @@ config.color_scheme = 'Sonokai (Gogh)'
 config.audible_bell = "Disabled"
 
 -- start size.
-config.initial_cols = 120
-config.initial_rows = 75
+-- Initial window size *could* be set like the following.
+-- config.initial_cols = 180
+-- config.initial_rows = 100
+-- However, the following gui-startup function will set it to the right half of
+-- the screen. Calculates both size and positions.
+-- Define an event handler for GUI startup
+wezterm.on('gui-startup', function(cmd) 
+  -- Get information about the active screen
+  local screen = wezterm.gui.screens().active 
+
+  -- Calculate desired width for the WezTerm window (half of the screen width)
+  local width, height = screen.width / 2, screen.height 
+
+  -- Spawn a new window with the specified command (or the default command)
+  local tab, pane, window = mux.spawn_window(cmd or {}) 
+
+  -- Set the size of the new window to half of the screen width
+  window:gui_window():set_inner_size(width, height)
+
+  -- Position the window on the right half of the screen
+  window:gui_window():set_position(screen.width / 2,  0) 
+end)
 
 -- Some other good themes.
 -- config.color_scheme = "OneHalfDark"
